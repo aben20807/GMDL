@@ -1,22 +1,36 @@
-# inject_js
+# GMDL: Give Me Direct Link
 
-Inject custom JavaScript (injected.js) to web pages by a Chrome extension (manifest v3)
+Get direct link of files in Google Drive by a Chrome extension (manifest v3)
+
+Convert `{ID}` to `https://lh3.googleusercontent.com/d/{ID}` (or you can change to use `https://drive.google.com/uc?id={ID}` by yourself)
+
+Created links may be deleted by Google Drive, you can move the pointer to regenerate (this is a hack by adding listener to "pointermove" :stuck_out_tongue_winking_eye:)
 
 ## Screenshot
 
-![Screenshot from 2023-02-03 10-05-19](https://user-images.githubusercontent.com/14831545/216495049-ce167d82-1b51-428a-a5f3-247d18397eb8.png)
+![screenshot](https://lh3.googleusercontent.com/d/1iyFzPODpFIgWUvICJVo4s_osAm1brPGF)
 
 ## Usage
+
+Tested on Brave 1.50.119 (Chromium: 112.0.5615.121)
 
 1. clone/download this repo; modify injected.js if you need
 2. go to chrome://extensions (or brave://extensions)
 3. toggle "Developer mode" on
 4. click "Load unpacked" and select the folder of the repo
 5. (optional) click "Details" of the extension and toggle "Allow in Private" on
+6. Open your google drive, browse images, and enjoy the hack
 
-## Inspiration
+## Known issues
 
-This repo is inspired by [uxter/injected.js](https://gist.github.com/uxter/50fb1c7011471442862bd921ec589a64) (manifest v2)
+1. Need to refresh page (F5) after uploading new images
+2. Only support image files
+3. Language should be eithor English or 繁體中文
+4. To copy the link, you need to use Shift key + right click
+
+## Disclaimer
+
+This project is not provided by Google (Alphabet Inc.)
 
 ## License
 

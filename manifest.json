@@ -1,13 +1,14 @@
 {
     "manifest_version": 3,
-    "name": "Inject custom script",
-    "short_name": "InjectCustomScript",
+    "name": "Give Me Direct Link",
+    "short_name": "GMDL",
+    "description": "Give me direct link of files in google drive",
     "version": "1.0.0",
     "action": {},
     "content_scripts": [
         {
             "matches": [
-                "*://*/*"
+                "https://drive.google.com/*"
             ],
             "js": [
                 "injector.js"

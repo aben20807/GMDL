@@ -23,7 +23,7 @@
                 "injected.js"
             ],
             "matches": [
-                "<all_urls>"
+                "https://drive.google.com/*"
             ]
         }
     ],

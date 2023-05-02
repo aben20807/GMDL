@@ -1,10 +1,10 @@
 # GMDL: Give Me Direct Link
 
-Get direct link of files in Google Drive by a Chrome extension (manifest v3)
+Get direct links to files in Google Drive by a Chrome extension (manifest v3)
 
 Convert `{ID}` to `https://lh3.googleusercontent.com/d/{ID}` (or you can change to use `https://drive.google.com/uc?id={ID}` by yourself)
 
-Created links may be deleted by Google Drive, you can move the pointer to regenerate (this is a hack by adding listener to "pointermove" :stuck_out_tongue_winking_eye:)
+Created links may be deleted by Google Drive, you can move the pointer to regenerate (this is a hack by adding a listener to "pointermove" :stuck_out_tongue_winking_eye:)
 
 ## Screenshot
 
@@ -23,10 +23,12 @@ Tested on Brave 1.50.119 (Chromium: 112.0.5615.121)
 
 ## Known issues
 
+If it shows "404. That’s an error.", it means that the file is not shared. Please share the image(s) first
+
 1. Need to refresh page (F5) after uploading new images
-2. Only support image files
-3. Language should be eithor English or 繁體中文
-4. To copy the link, you need to use Shift key + right click
+2. Only support image files (see `postfix` in `injected.js`)
+3. Language should be either English or 繁體中文 (see `postfix` in `injected.js`)
+4. To copy the link directly, you need to use the Shift key + right click on the generated link
 
 ## Disclaimer
 

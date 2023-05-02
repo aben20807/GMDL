@@ -15,6 +15,7 @@ function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
+const postfix = ["Image", "圖片", "Image Shortcut", "圖片捷徑"];
 var matches;
 
 document.addEventListener("pointermove", (_) => {
@@ -22,7 +23,8 @@ document.addEventListener("pointermove", (_) => {
   sleep(500).then(() => {
     let elm_cnt = 0;
     matches.forEach(function (element, _) {
-      if (!(element['caption'].endsWith("Image") || element['caption'].endsWith("圖片"))) {
+      
+      if (!postfix.some(s => element['caption'].endsWith(s))) {
         return;
       }
       const elm = document.querySelector('div[data-id="' + element['id'] + '"]');
@@ -38,7 +40,7 @@ document.addEventListener("pointermove", (_) => {
     if (elm_cnt == 0) {
       // trigger reload for changing folder
       let source = document.getElementsByTagName('html')[0].innerHTML;
-      const myRegexp = new RegExp("data-id=\"(.*?)\"[\\s\\S]*?aria-label=\"(.*?)\"", "g");//
+      const myRegexp = new RegExp("data-id=\"(.*?)\"[\\s\\S]*?aria-label=\"(.*?)\"", "g");
       matches = [...execAll(source, myRegexp)];
     }
   });

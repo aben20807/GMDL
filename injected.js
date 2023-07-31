@@ -24,7 +24,7 @@ document.addEventListener("pointermove", (_) => {
     let elm_cnt = 0;
     matches.forEach(function (element, _) {
       
-      if (!postfix.some(s => element['caption'].endsWith(s))) {
+      if (!postfix.some(s => element['caption'].trim().endsWith(s))) {
         return;
       }
       const elm = document.querySelector('div[data-id="' + element['id'] + '"]');
@@ -35,6 +35,7 @@ document.addEventListener("pointermove", (_) => {
       if (elm.nextSibling.className != "injected-gmdl-link") {
         elm.insertAdjacentHTML('afterend',
           '<div class="injected-gmdl-link" style="z-index: 999; text-align: center;"><a href="https://lh3.googleusercontent.com/d/' + element['id'] + '" target="_blank">direct link</a></div>');
+        // console.log("https://lh3.googleusercontent.com/d/" + element['id']);
       }
     });
     if (elm_cnt == 0) {

@@ -23,8 +23,8 @@ document.addEventListener("pointermove", (_) => {
   sleep(500).then(() => {
     let elm_cnt = 0;
     matches.forEach(function (element, _) {
-      
-      if (!postfix.some(s => element['caption'].trim().endsWith(s))) {
+      // console.log(element);
+      if (!postfix.some(s => element['caption'].trim().includes(s))) {
         return;
       }
       const elm = document.querySelector('div[data-id="' + element['id'] + '"]');

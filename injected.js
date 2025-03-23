@@ -15,7 +15,7 @@ function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-const postfix = ["Image", "圖片", "Image Shortcut", "圖片捷徑"];
+const postfix = ["Image", "圖片", "Image Shared", "已共用", "Image Shortcut", "圖片捷徑"];
 var matches;
 
 document.addEventListener("pointermove", (_) => {
@@ -38,18 +38,16 @@ document.addEventListener("pointermove", (_) => {
         // console.log("https://lh3.googleusercontent.com/d/" + element['id']);
       }
     });
-    if (elm_cnt == 0) {
-      // trigger reload for changing folder
-      let source = document.getElementsByTagName('html')[0].innerHTML;
-      const myRegexp = new RegExp("data-id=\"(.*?)\"[\\s\\S]*?aria-label=\"(.*?)\"", "g");
-      matches = [...execAll(source, myRegexp)];
-    }
+    // trigger reload for changing folder, hidden files in first render, and new file upload
+    let source = document.getElementsByTagName('html')[0].innerHTML;
+    const myRegexp = new RegExp("data-id=\"(.*?)\"[\\s\\S]*?aria-label=\"(.*?)\"", "gm");
+    matches = [...execAll(source, myRegexp)];
   });
 });
 
 async function main() {
   let source = document.getElementsByTagName('html')[0].innerHTML;
-  const myRegexp = new RegExp("data-id=\"(.*?)\"[\\s\\S]*?aria-label=\"(.*?)\"", "g");
+  const myRegexp = new RegExp("data-id=\"(.*?)\"[\\s\\S]*?aria-label=\"(.*?)\"", "gm");
   matches = [...execAll(source, myRegexp)];
 }
 

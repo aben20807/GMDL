@@ -27,12 +27,13 @@ document.addEventListener("pointermove", (_) => {
       if (!postfix.some(s => element['caption'].trim().includes(s))) {
         return;
       }
-      const elm = document.querySelector('div[data-id="' + element['id'] + '"]');
-      if (elm === null) {
+      const elms = document.querySelectorAll('div[data-id="' + element['id'] + '"]');
+      if (elms.length === 0) {
         return;
       }
+      const elm = elms[elms.length - 1];
       elm_cnt++;
-      if (elm.nextSibling.className != "injected-gmdl-link") {
+      if (elm.nextSibling === null || elm.nextSibling.className != "injected-gmdl-link") {
         elm.insertAdjacentHTML('afterend',
           '<div class="injected-gmdl-link" style="z-index: 999; text-align: center;"><a href="https://lh3.googleusercontent.com/d/' + element['id'] + '" target="_blank">direct link</a></div>');
         // console.log("https://lh3.googleusercontent.com/d/" + element['id']);

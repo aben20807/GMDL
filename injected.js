@@ -33,10 +33,16 @@ document.addEventListener("pointermove", (_) => {
       }
       const elm = elms[elms.length - 1];
       elm_cnt++;
-      if (elm.nextSibling === null || elm.nextSibling.className != "injected-gmdl-link") {
+      const btnStyle = 'display: inline-block; color: #1a73e8; border: 1px solid #1a73e8; border-radius: 4px; padding: 0 6px; text-decoration: none; font-family: Roboto,Arial,sans-serif; font-size: 12px; font-weight: 400; white-space: nowrap; line-height: 16px;';
+      const divStyle = 'z-index: 999; align-self: center; margin-left: 8px;';
+      const linkHtml = '<a href="https://lh3.googleusercontent.com/d/' + element['id'] + '" target="_blank" style="' + btnStyle + '">direct link</a>';
+
+      if (elm.nextSibling && elm.nextSibling.className === "injected-gmdl-link") {
+        elm.nextSibling.style.cssText = divStyle;
+        elm.nextSibling.innerHTML = linkHtml;
+      } else {
         elm.insertAdjacentHTML('afterend',
-          '<div class="injected-gmdl-link" style="z-index: 999; text-align: center;"><a href="https://lh3.googleusercontent.com/d/' + element['id'] + '" target="_blank">direct link</a></div>');
-        // console.log("https://lh3.googleusercontent.com/d/" + element['id']);
+          '<div class="injected-gmdl-link" style="' + divStyle + '">' + linkHtml + '</div>');
       }
     });
     // trigger reload for changing folder, hidden files in first render, and new file upload
